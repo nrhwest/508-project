@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">508 Project</string>
+
+
+    <string-array name="firstName">
+        <item>  </item>
+        <item>is</item>
+        <item>is not</item>
+        <item>contain</item>
+    </string-array>
+
+    <string-array name="lastName">
+        <item>is</item>
+        <item>is not</item>
+        <item>contain</item>
+    </string-array>
+
+    <string-array name="ID">
+        <item>is</item>
+        <item>is not</item>
+        <item>contain</item>
+    </string-array>
+
+    <string-array name="email">
+        <item>is</item>
+        <item>is not</item>
+        <item>contain</item>
+    </string-array>
+
+    <string-array name="schoolDistrict">
+        <item>is</item>
+        <item>is not</item>
+        <item>contain</item>
+    </string-array>
+
 </resources>
