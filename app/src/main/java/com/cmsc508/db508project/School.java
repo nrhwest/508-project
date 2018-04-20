@@ -40,7 +40,7 @@ public class School {
         return sID;
     }
 
-    public void setPhoneNum(int pn) { this.phoneNum = pn }
+    public void setPhoneNum(int pn) { this.phoneNum = pn; }
 
     public int getPhoneNum() {
         return phoneNum;
