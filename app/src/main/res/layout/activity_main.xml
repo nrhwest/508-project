@@ -124,6 +124,7 @@
         android:layout_alignEnd="@+id/schoolEditText"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
+        android:layout_below="@+id/schoolEditText"
         android:ems="10"
         android:hint="Training"
         android:inputType="textPersonName" />
@@ -141,6 +142,24 @@
         android:layout_height="39dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/schoolSpinner" />
+
+    <EditText
+        android:id="@+id/gradeLevelEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/trainingEditText"
+        android:layout_toStartOf="@+id/trainingSpinner"
+        android:ems="10"
+        android:hint="Grade Level"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/gradeLevelSpinner"
+        android:layout_width="147dp"
+        android:layout_height="39dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/trainingSpinner" />
 
 
 </RelativeLayout>
