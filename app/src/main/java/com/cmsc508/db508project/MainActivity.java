@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -125,8 +127,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(startIntent);
             }
         });
-
-
 
     }
 
