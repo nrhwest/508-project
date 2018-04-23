@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class tableView extends AppCompatActivity {
 
@@ -39,6 +40,12 @@ public class tableView extends AppCompatActivity {
 
         }
 
+        //Bundle extras = getIntent().getExtras();
+        //String firstName;
+
+//        if (!extras.isEmpty()) {
+//            firstName = extras.getString("firstName");
+//        }
 
         String firstName = getIntent().getStringExtra("firstName");
         String lastName = getIntent().getStringExtra("lastName");
@@ -50,10 +57,11 @@ public class tableView extends AppCompatActivity {
         String gradeLevel = getIntent().getStringExtra("gradeLevel");
 
         if (firstName.length() > 0) {
-            query = "select * from teacher where firstName = " + firstName + ";";
+            query = "select * from teacher where firstName = " + firstName + "' ;";
         }
 
 
+        Teacher teacher = new Teacher();
 
 
 
@@ -62,10 +70,15 @@ public class tableView extends AppCompatActivity {
         SQLiteDatabase database = db.getWritableDatabase();
 
         cursor = database.rawQuery(query, null);
+        ArrayList<String> teacherArray = new ArrayList<String>();
+
+
 
         StringBuffer buffer = new StringBuffer();
         while(cursor.moveToNext()){
             buffer.append(cursor.getString(0)+ "\n");
+            cursor.
+
         }
 
        showMessage("Query", buffer.toString());

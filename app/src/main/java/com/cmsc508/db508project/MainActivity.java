@@ -13,20 +13,23 @@ import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText firstNameET, lastNameET, idET, emailET, schoolDistrictET, schoolET, trainingET, gradeLevelET;
+    private String firstName, lastName, nameID, email, schoolDistrict, schoolName, training, gradeLevel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 //EditText
-        final EditText firstNameET = (EditText) findViewById(R.id.firstNameEditText);
-        final EditText lastNameET = (EditText) findViewById(R.id.lastNameEditText);
-        final EditText idET = (EditText) findViewById(R.id.IDEditText);
-        final EditText emailET = (EditText) findViewById(R.id.emailEditText);
-        final EditText schoolDistrictET = (EditText) findViewById(R.id.schoolDistrictEditText);
-        final EditText schoolET = (EditText) findViewById(R.id.schoolEditText);
-        final EditText trainingET = (EditText) findViewById(R.id.trainingEditText);
-        final EditText gradeLevelET = (EditText) findViewById(R.id.gradeLevelEditText);
+        firstNameET = (EditText) findViewById(R.id.firstNameEditText);
+        lastNameET = (EditText) findViewById(R.id.lastNameEditText);
+        idET = (EditText) findViewById(R.id.IDEditText);
+        emailET = (EditText) findViewById(R.id.emailEditText);
+        schoolDistrictET = (EditText) findViewById(R.id.schoolDistrictEditText);
+        schoolET = (EditText) findViewById(R.id.schoolEditText);
+        trainingET = (EditText) findViewById(R.id.trainingEditText);
+        gradeLevelET = (EditText) findViewById(R.id.gradeLevelEditText);
 
 
 //Button
@@ -34,14 +37,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 //Retrieving data from editText
-        final String firstName = firstNameET.getText().toString();
-        final String lastName = lastNameET.getText().toString();
-        final String nameID = idET.getText().toString();
-        final String email = emailET.getText().toString();
-        final String schoolDistrict = schoolDistrictET.getText().toString();
-        final String schoolName = schoolET.getText().toString();
-        final String training = trainingET.getText().toString();
-        final String gradeLevel = gradeLevelET.getText().toString();
+          firstName = firstNameET.getText().toString();
+          lastName = lastNameET.getText().toString();
+          nameID = idET.getText().toString();
+          email = emailET.getText().toString();
+          schoolDistrict = schoolDistrictET.getText().toString();
+          schoolName = schoolET.getText().toString();
+          training = trainingET.getText().toString();
+          gradeLevel = gradeLevelET.getText().toString();
 
 
  //Switching views
