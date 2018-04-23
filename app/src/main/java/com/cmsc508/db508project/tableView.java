@@ -79,9 +79,6 @@ public class tableView extends AppCompatActivity {
             query = String.format("Select * from teacher where lastName = '" + lastName + "';");
         }
 
-        if (nameID.length() > 0){
-            query = String.format("Select * from teacher where nameID = '" + nameID + "';");
-        }
 
         if (email.length() > 0){
             query = String.format("Select * from teacher where email = '" + email + "';");
@@ -116,13 +113,42 @@ public class tableView extends AppCompatActivity {
             query = String.format("Select * from training where training = '" + training + "' AND gradeLevel = '" + gradeLevel  + "';");
         }
 
+
+
         //Query 1
         if (schoolDistrict.length() > 0){
             query = String.format("Select firstName from teacher inner join school using (sID) where districtName = '" + schoolDistrict + "';");
         }
 
-        //Query
+        //Query 10
+        if (schoolName.length() > 0){
+            query = String.format("Select firstName from teacher where schoolName = '" + schoolName + "';");
+        }
 
+        //Query 11
+        if (schoolName.length() > 0 && schoolDistrict.length() > 0){
+            query = String.format("Select numTeachersSent from school where districtName = '" + schoolDistrict + "' AND schoolName = '" + schoolName  + "';");
+        }
+
+        //Query 12
+        if (gradeLevel.length() > 0){
+            query = String.format("Select firstName, lastName from teacher where gradeLevel = '" + gradeLevel + "';");
+        }
+
+        //Query
+        if (gradeLevel.length() > 0 && schoolDistrict.length() > 0){
+            query = String.format("Select workEmail from teacher inner join school using (sID) where gradeLevel = '" + gradeLevel + "' AND districtName = '" + schoolDistrict + "';");
+        }
+
+        //Query
+        if (nameID.length() > 0){
+            query = String.format("Select * from teacher where tID = '" + nameID + "';");
+        }
+
+        //Query
+        if (training.length() > 0){
+            query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
+        }
 
        // query = String.format("select * from teacher;");
         SQLiteDatabase database = db.getWritableDatabase();
