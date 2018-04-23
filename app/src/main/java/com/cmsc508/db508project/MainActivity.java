@@ -4,22 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
-
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
-
+    EditText firstNameET;
+    String firstName, lastName, nameID, email, schoolDistrict, schoolName, training, gradeLevel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 //EditText
-        final EditText firstNameET = (EditText) findViewById(R.id.firstNameEditText);
+        firstNameET = (EditText) findViewById(R.id.firstNameEditText);
         final EditText lastNameET = (EditText) findViewById(R.id.lastNameEditText);
         final EditText idET = (EditText) findViewById(R.id.IDEditText);
         final EditText emailET = (EditText) findViewById(R.id.emailEditText);
@@ -32,24 +29,24 @@ public class MainActivity extends AppCompatActivity {
 //Button
         Button Search = (Button) findViewById(R.id.searchButton);
 
-
-//Retrieving data from editText
-        final String firstName = firstNameET.getText().toString();
-        final String lastName = lastNameET.getText().toString();
-        final String nameID = idET.getText().toString();
-        final String email = emailET.getText().toString();
-        final String schoolDistrict = schoolDistrictET.getText().toString();
-        final String schoolName = schoolET.getText().toString();
-        final String training = trainingET.getText().toString();
-        final String gradeLevel = gradeLevelET.getText().toString();
-
-
  //Switching views
         Search.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+
+                //Retrieving data from editText
+                firstName = firstNameET.getText().toString();
+                lastName = lastNameET.getText().toString();
+                nameID = idET.getText().toString();
+                email = emailET.getText().toString();
+                schoolDistrict = schoolDistrictET.getText().toString();
+                schoolName = schoolET.getText().toString();
+                training = trainingET.getText().toString();
+                gradeLevel = gradeLevelET.getText().toString();
+
                 Intent startIntent = new Intent(MainActivity.this, tableView.class);
+                System.out.println("MAIN FIRST NAME IS " + firstName);
 
                 if(firstNameET.getText().toString().trim().length() > 0){
                 startIntent.putExtra("firstName", firstName);
