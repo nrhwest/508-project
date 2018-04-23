@@ -50,7 +50,7 @@ public class tableView extends AppCompatActivity {
         String gradeLevel = getIntent().getStringExtra("gradeLevel");
 
         if (firstName.length() > 0) {
-            
+            query = "select * from teacher where firstName = " + firstName + ";";
         }
 
 
@@ -60,15 +60,15 @@ public class tableView extends AppCompatActivity {
 
 
         SQLiteDatabase database = db.getWritableDatabase();
-        query = "select firstName from teacher";
+
         cursor = database.rawQuery(query, null);
 
         StringBuffer buffer = new StringBuffer();
         while(cursor.moveToNext()){
-            buffer.append("Name: " + cursor.getString(0)+ "\n");
+            buffer.append(cursor.getString(0)+ "\n");
         }
 
-       // showMessage("Query", buffer.toString());
+       showMessage("Query", buffer.toString());
 
     }
 
