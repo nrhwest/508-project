@@ -6,32 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.cmsc508.db508project.MainActivity">
 
-    <Spinner
-        android:id="@+id/nameSpinner"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="391dp" />
-
     <EditText
         android:id="@+id/firstNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="39dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/nameSpinner"
+        android:layout_below="@+id/gradeLevelEditText"
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName" />
-
-    <Spinner
-        android:id="@+id/lastNameSpinner"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:layout_below="@+id/firstNameEditText"
-        android:layout_toEndOf="@+id/firstNameEditText" />
 
     <EditText
         android:id="@+id/lastNameEditText"
@@ -49,7 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/lastNameSpinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="138dp"
         android:text="Search" />
 
     <EditText
@@ -85,27 +69,6 @@
         android:hint="School District"
         android:inputType="textPersonName" />
 
-    <Spinner
-        android:id="@+id/IDspinner"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/lastNameSpinner" />
-
-    <Spinner
-        android:id="@+id/emailSpinner"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/IDspinner" />
-
-    <Spinner
-        android:id="@+id/schoolDistrictSpinner"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/emailEditText" />
-
     <EditText
         android:id="@+id/schoolEditText"
         android:layout_width="wrap_content"
@@ -129,20 +92,6 @@
         android:hint="Training"
         android:inputType="textPersonName" />
 
-    <Spinner
-        android:id="@+id/schoolSpinner"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:layout_above="@+id/trainingEditText"
-        android:layout_alignParentEnd="true" />
-
-    <Spinner
-        android:id="@+id/trainingSpinner"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/schoolSpinner" />
-
     <EditText
         android:id="@+id/gradeLevelEditText"
         android:layout_width="wrap_content"
@@ -153,13 +102,6 @@
         android:ems="10"
         android:hint="Grade Level"
         android:inputType="textPersonName" />
-
-    <Spinner
-        android:id="@+id/gradeLevelSpinner"
-        android:layout_width="147dp"
-        android:layout_height="39dp"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/trainingSpinner" />
 
 
 </RelativeLayout>

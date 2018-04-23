@@ -5,8 +5,7 @@
     <string-array name="firstName">
         <item>  </item>
         <item>is</item>
-        <item>is not</item>
-        <item>contain</item>
+
     </string-array>
 
     <string-array name="lastName">

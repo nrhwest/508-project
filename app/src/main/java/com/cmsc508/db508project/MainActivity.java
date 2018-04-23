@@ -29,49 +29,8 @@ public class MainActivity extends AppCompatActivity {
         final EditText gradeLevelET = (EditText) findViewById(R.id.gradeLevelEditText);
 
 
-//Spinners
-        Spinner nameSpinner = (Spinner) findViewById(R.id.nameSpinner);
-        Spinner lastNameSpinner = (Spinner) findViewById(R.id.lastNameSpinner);
-        Spinner idSpinner = (Spinner) findViewById(R.id.IDspinner);
-        Spinner emailSpinner = (Spinner) findViewById(R.id.emailSpinner);
-        Spinner schoolDistrictSpinner = (Spinner) findViewById(R.id.schoolDistrictSpinner);
-        Spinner schoolSpinner = (Spinner) findViewById(R.id.schoolSpinner);
-        Spinner trainingSpinner = (Spinner) findViewById(R.id.trainingSpinner);
-        Spinner gradeSpinner = (Spinner) findViewById(R.id.gradeLevelSpinner);
-
-
-//        nameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                if (i == 1){
-//                    //Do whatever here
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-
 //Button
         Button Search = (Button) findViewById(R.id.searchButton);
-
-
-        ArrayAdapter<String> firstAdapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.firstName));
-
-        firstAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-//Set string for dropdown
-        nameSpinner.setAdapter(firstAdapter);
-        lastNameSpinner.setAdapter(firstAdapter);
-        idSpinner.setAdapter(firstAdapter);
-        emailSpinner.setAdapter(firstAdapter);
-        schoolDistrictSpinner.setAdapter(firstAdapter);
-        schoolSpinner.setAdapter(firstAdapter);
-        trainingSpinner.setAdapter(firstAdapter);
-        gradeSpinner.setAdapter(firstAdapter);
 
 
 //Retrieving data from editText
