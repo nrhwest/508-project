@@ -50,7 +50,16 @@ public class tableView extends AppCompatActivity {
         String training = getIntent().getStringExtra("training");
         String gradeLevel = getIntent().getStringExtra("gradeLevel");
 
+<<<<<<< HEAD
         System.out.println("FIRST NAME IS " + firstName);
+=======
+        if (firstName.length() > 0) {
+            query = "select * from teacher where firstName = " + firstName + ";";
+        }
+
+
+
+>>>>>>> 8f60c36ca8e208a4c51edd9561de916cc03f18ad
 
         if (firstName.length() > 0){
             query = String.format("Select * from teacher where firstName = '" + firstName + "';");
@@ -59,9 +68,14 @@ public class tableView extends AppCompatActivity {
 
 
         SQLiteDatabase database = db.getWritableDatabase();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8f60c36ca8e208a4c51edd9561de916cc03f18ad
         cursor = database.rawQuery(query, null);
         
 
+<<<<<<< HEAD
 
 //        StringBuffer buffer = new StringBuffer();
 //        while(cursor.moveToNext()){
@@ -69,6 +83,14 @@ public class tableView extends AppCompatActivity {
 //            buffer.append("Ni" + cursor.getString(1)+ "\n");
 //        }
 //        showMessage("Query", buffer.toString());
+=======
+        StringBuffer buffer = new StringBuffer();
+        while(cursor.moveToNext()){
+            buffer.append(cursor.getString(0)+ "\n");
+        }
+
+       showMessage("Query", buffer.toString());
+>>>>>>> 8f60c36ca8e208a4c51edd9561de916cc03f18ad
 
     }
 
