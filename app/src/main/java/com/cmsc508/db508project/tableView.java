@@ -6,6 +6,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
+import android.support.v7.app.AlertDialog;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 public class tableView extends AppCompatActivity {
 
     Cursor cursor;
+    String query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +38,37 @@ public class tableView extends AppCompatActivity {
             e.printStackTrace();
 
         }
+
+
+        String firstName = getIntent().getStringExtra("firstName");
+        String lastName = getIntent().getStringExtra("lastName");
+        String nameID = getIntent().getStringExtra("ID");
+        String email = getIntent().getStringExtra("email");
+        String schoolDistrict = getIntent().getStringExtra("schoolDistrict");
+        String schoolName = getIntent().getStringExtra("schoolName");
+        String training = getIntent().getStringExtra("training");
+        String gradeLevel = getIntent().getStringExtra("gradeLevel");
+
+        if (firstName.length() > 0) {
+            
+        }
+
+
+
+
+
+
+
         SQLiteDatabase database = db.getWritableDatabase();
-        String query = "select firstName from teacher";
+        query = "select firstName from teacher";
         cursor = database.rawQuery(query, null);
 
         StringBuffer buffer = new StringBuffer();
         while(cursor.moveToNext()){
-            buffer.append("Name " + cursor.getString(0)+ "\n");
+            buffer.append("Name: " + cursor.getString(0)+ "\n");
         }
 
-        showMessage("Query", buffer.toString());
+       // showMessage("Query", buffer.toString());
 
     }
 
