@@ -3,14 +3,13 @@ package com.cmsc508.db508project;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class tableView extends AppCompatActivity {
 
@@ -23,6 +22,7 @@ public class tableView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table_view);
         list = (ListView) findViewById(R.id.displayList);
+
 
         DatabaseHelper db = new DatabaseHelper(this);
 
@@ -88,7 +88,7 @@ public class tableView extends AppCompatActivity {
         }
 
         if (schoolDistrict.length() > 0){
-            query = String.format("Select * from school where schoolDistrict = '" + schoolDistrict + "';");
+            query = String.format("Select * from school where districtName = '" + schoolDistrict + "';");
         }
 
         if (schoolName.length() > 0){
@@ -103,53 +103,63 @@ public class tableView extends AppCompatActivity {
             query = String.format("Select * from training where gradeLevel = '" + gradeLevel + "';");
         }
 
-
-
         if (firstName.length() > 0 && lastName.length() > 0){
             System.out.println("in if 2");
-            query = String.format("Select * from teacher where firstName = '" + firstName + "' && lastName = '" + lastName  + "';");
+            query = String.format("Select * from teacher where firstName = '" + firstName + "' AND lastName = '" + lastName  + "';");
         }
 
         if (schoolDistrict.length() > 0 && schoolName.length() > 0){
-            query = String.format("Select * from school where schoolDistrict = '" + schoolDistrict + "' && schoolName = '" + schoolName  + "';");
+            query = String.format("Select * from school where schoolDistrict = '" + schoolDistrict + "' AND schoolName = '" + schoolName  + "';");
         }
 
         if (training.length() > 0 && gradeLevel.length() > 0){
-            query = String.format("Select * from training where training = '" + training + "' && gradeLevel = '" + gradeLevel  + "';");
+            query = String.format("Select * from training where training = '" + training + "' AND gradeLevel = '" + gradeLevel  + "';");
         }
 
+        //Query 1
+        if (schoolDistrict.length() > 0){
+            query = String.format("Select firstName from teacher inner join school using (sID) where districtName = '" + schoolDistrict + "';");
+        }
 
+        //Query
+
+
+       // query = String.format("select * from teacher;");
         SQLiteDatabase database = db.getWritableDatabase();
         System.out.println("Gucci");
         cursor = database.rawQuery(query, null);
-        System.out.println("Gucci2");
-        ArrayList<String> teacherArray = new ArrayList<String>();
+        System.out.println("cursor count = " + cursor.getCount());
 
 
+//if(cursor.moveToFirst()) {
+//    Log.v("Cursor Object", DatabaseUtils.dumpCursorToString(cursor));
+//}
 
-        StringBuffer buffer = new StringBuffer();
+        String[] array = new String[cursor.getCount()];
+        int i = 0;
+
+
         while(cursor.moveToNext()){
-            buffer.append("Name: " + cursor.getString(0)+ "\n");
-            buffer.append("Ni" + cursor.getString(1)+ "\n");
+            StringBuilder sb = new StringBuilder();
+            String temp = "";
+            for (int j = 0; j < cursor.getColumnNames().length; j++) {
+                temp = String.valueOf(sb.append(cursor.getString(j) + ", ") );
+            }
+            temp = sb.toString();
+                array[i] = temp;
+                i++;
         }
-        showMessage("Query", buffer.toString());
 
-//        StringBuffer buffer = new StringBuffer();
-//        while(cursor.moveToNext()){
-//            buffer.append(cursor.getString(0)+ "\n");
-//
-//        }
+        for (int j = 0; j < array.length; j++) {
+            System.out.println(array[j]);
+        }
 
-       //showMessage("Query", buffer.toString());
+
+        //showMessage("Query", buffer.toString());
+        ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array);
+        list.setAdapter(adapter);
 
     }
 
-    public void showMessage(String title, String Message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
-    }
 
 }
