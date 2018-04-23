@@ -8,15 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-<<<<<<< HEAD
+
 
     private EditText firstNameET, lastNameET, idET, emailET, schoolDistrictET, schoolET, trainingET, gradeLevelET;
     private String firstName, lastName, nameID, email, schoolDistrict, schoolName, training, gradeLevel;
 
-=======
-    EditText firstNameET;
-    String firstName, lastName, nameID, email, schoolDistrict, schoolName, training, gradeLevel;
->>>>>>> cd2b0dddfe47197874e55fb52bb1b2f3ccb3533e
+
+//    EditText firstNameET, lastNameET, idET, emailET,schoolDistrictET, schoolET, trainingET, gradeLevelET;
+//    String firstName, lastName, nameID, email, schoolDistrict, schoolName, training, gradeLevel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 //EditText
         firstNameET = (EditText) findViewById(R.id.firstNameEditText);
-<<<<<<< HEAD
+
         lastNameET = (EditText) findViewById(R.id.lastNameEditText);
         idET = (EditText) findViewById(R.id.IDEditText);
         emailET = (EditText) findViewById(R.id.emailEditText);
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         schoolET = (EditText) findViewById(R.id.schoolEditText);
         trainingET = (EditText) findViewById(R.id.trainingEditText);
         gradeLevelET = (EditText) findViewById(R.id.gradeLevelEditText);
-=======
+
         final EditText lastNameET = (EditText) findViewById(R.id.lastNameEditText);
         final EditText idET = (EditText) findViewById(R.id.IDEditText);
         final EditText emailET = (EditText) findViewById(R.id.emailEditText);
@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity {
         final EditText schoolET = (EditText) findViewById(R.id.schoolEditText);
         final EditText trainingET = (EditText) findViewById(R.id.trainingEditText);
         final EditText gradeLevelET = (EditText) findViewById(R.id.gradeLevelEditText);
->>>>>>> cd2b0dddfe47197874e55fb52bb1b2f3ccb3533e
+
 
 
 //Button
         Button Search = (Button) findViewById(R.id.searchButton);
 
-<<<<<<< HEAD
+
 
 //Retrieving data from editText
           firstName = firstNameET.getText().toString();
@@ -59,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
           gradeLevel = gradeLevelET.getText().toString();
 
 
-=======
->>>>>>> cd2b0dddfe47197874e55fb52bb1b2f3ccb3533e
+
  //Switching views
         Search.setOnClickListener(new View.OnClickListener() {
 
@@ -80,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent startIntent = new Intent(MainActivity.this, tableView.class);
                 System.out.println("MAIN FIRST NAME IS " + firstName);
 
+                if(firstName.length() == 0){
+                    startIntent.putExtra("firstName", "");
+                }
+
                 if(firstNameET.getText().toString().trim().length() > 0){
                 startIntent.putExtra("firstName", firstName);
                 }
@@ -88,28 +91,56 @@ public class MainActivity extends AppCompatActivity {
                     startIntent.putExtra("lastName", lastName);
                 }
 
+                if(lastName.length() == 0){
+                    startIntent.putExtra("lastName", "");
+                }
+
                 if(idET.getText().toString().trim().length() > 0) {
                     startIntent.putExtra("ID", nameID);
+                }
+
+                if(nameID.length() == 0){
+                    startIntent.putExtra("ID", "");
                 }
 
                 if(emailET.getText().toString().trim().length() > 0) {
                     startIntent.putExtra("email", email);
                 }
 
+                if(email.length() == 0){
+                    startIntent.putExtra("email", "");
+                }
+
                 if(schoolDistrictET.getText().toString().trim().length() > 0) {
                     startIntent.putExtra("schoolDistrict", schoolDistrict);
+                }
+
+                if(schoolDistrict.length() == 0){
+                    startIntent.putExtra("schoolDistrict", "");
                 }
 
                 if(schoolET.getText().toString().trim().length() > 0) {
                     startIntent.putExtra("schoolName", schoolName);
                 }
 
+                if(schoolName.length() == 0){
+                    startIntent.putExtra("schoolName", "");
+                }
+
                 if(trainingET.getText().toString().trim().length() > 0) {
                     startIntent.putExtra("training", training);
                 }
 
+                if(training.length() == 0){
+                    startIntent.putExtra("training", "");
+                }
+
                 if(gradeLevelET.getText().toString().trim().length() > 0) {
                     startIntent.putExtra("gradeLevel", gradeLevel);
+                }
+
+                if(gradeLevel.length() == 0){
+                    startIntent.putExtra("gradeLevel", "");
                 }
 
                 startActivity(startIntent);
