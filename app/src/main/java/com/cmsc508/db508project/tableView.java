@@ -42,13 +42,6 @@ public class tableView extends AppCompatActivity {
 
         }
 
-        //Bundle extras = getIntent().getExtras();
-        //String firstName;
-
-//        if (!extras.isEmpty()) {
-//            firstName = extras.getString("firstName");
-//        }
-
         String firstName = getIntent().getStringExtra("firstName");
         String lastName = getIntent().getStringExtra("lastName");
         String nameID = getIntent().getStringExtra("ID");
@@ -57,6 +50,7 @@ public class tableView extends AppCompatActivity {
         String schoolName = getIntent().getStringExtra("schoolName");
         String training = getIntent().getStringExtra("training");
         String gradeLevel = getIntent().getStringExtra("gradeLevel");
+        String location = getIntent().getStringExtra("location");
 
         System.out.println("FIRST NAME IS " + firstName);
         System.out.println("LAST NAME IS " + lastName);
@@ -66,19 +60,17 @@ public class tableView extends AppCompatActivity {
         System.out.println("school NAME IS " + schoolName);
         System.out.println("training NAME IS " + training);
         System.out.println("gradeLevel IS " + gradeLevel);
+        System.out.println("location IS " + location);
 
         Teacher teacher = new Teacher();
 
         if (firstName.length() > 0) {
-            System.out.println("in if");
             query = "select * from teacher where firstName = '" + firstName + "';";
         }
 
         if (lastName.length() > 0){
-            System.out.println("in if 3");
             query = String.format("Select * from teacher where lastName = '" + lastName + "';");
         }
-
 
         if (email.length() > 0){
             query = String.format("Select * from teacher where email = '" + email + "';");
@@ -101,16 +93,7 @@ public class tableView extends AppCompatActivity {
         }
 
         if (firstName.length() > 0 && lastName.length() > 0){
-            System.out.println("in if 2");
             query = String.format("Select * from teacher where firstName = '" + firstName + "' AND lastName = '" + lastName  + "';");
-        }
-
-        if (schoolDistrict.length() > 0 && schoolName.length() > 0){
-            query = String.format("Select * from school where schoolDistrict = '" + schoolDistrict + "' AND schoolName = '" + schoolName  + "';");
-        }
-
-        if (training.length() > 0 && gradeLevel.length() > 0){
-            query = String.format("Select * from training where training = '" + training + "' AND gradeLevel = '" + gradeLevel  + "';");
         }
 
 
@@ -150,20 +133,16 @@ public class tableView extends AppCompatActivity {
             query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
         }
 
+
+
+
        // query = String.format("select * from teacher;");
         SQLiteDatabase database = db.getWritableDatabase();
-        System.out.println("Gucci");
         cursor = database.rawQuery(query, null);
         System.out.println("cursor count = " + cursor.getCount());
 
-
-//if(cursor.moveToFirst()) {
-//    Log.v("Cursor Object", DatabaseUtils.dumpCursorToString(cursor));
-//}
-
         String[] array = new String[cursor.getCount()];
         int i = 0;
-
 
         while(cursor.moveToNext()){
             StringBuilder sb = new StringBuilder();
@@ -180,8 +159,6 @@ public class tableView extends AppCompatActivity {
             System.out.println(array[j]);
         }
 
-
-        //showMessage("Query", buffer.toString());
         ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array);
         list.setAdapter(adapter);
 
