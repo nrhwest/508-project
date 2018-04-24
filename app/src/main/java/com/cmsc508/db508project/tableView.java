@@ -150,6 +150,14 @@ public class tableView extends AppCompatActivity {
             query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
         }
 
+        if (firstName.contains("*") && lastName.contains("*") && schoolName.contains("*") && schoolDistrict.length() > 0) {
+            query = String.format("select teacher.firstName, teacher.lastName, school.schoolName from teacher inner join school using (schoolName) where school.districtName = '" + schoolDistrict + "' group by firstName, lastName, schoolName;");
+        }
+
+        if (training.length() > 0 && gradeLevel.length() > 0 ) {
+            query = String.format("select streetName, city, state from address natural join session inner join training using(sessionDate) where trainingName = '" + training + "' and gradeLevel = '" + gradeLevel + "';");
+        }
+
        // query = String.format("select * from teacher;");
         SQLiteDatabase database = db.getWritableDatabase();
         System.out.println("Gucci");
