@@ -10,8 +10,8 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
 
 
-    private EditText firstNameET, lastNameET, idET, emailET, schoolDistrictET, schoolET, trainingET, gradeLevelET;
-    private String firstName, lastName, nameID, email, schoolDistrict, schoolName, training, gradeLevel;
+    private EditText firstNameET, lastNameET, idET, emailET, schoolDistrictET, schoolET, trainingET, gradeLevelET, locationET;
+    private String firstName, lastName, nameID, email, schoolDistrict, schoolName, training, gradeLevel, location;
 
 
 //    EditText firstNameET, lastNameET, idET, emailET,schoolDistrictET, schoolET, trainingET, gradeLevelET;
@@ -32,14 +32,15 @@ public class MainActivity extends AppCompatActivity {
         schoolET = (EditText) findViewById(R.id.schoolEditText);
         trainingET = (EditText) findViewById(R.id.trainingEditText);
         gradeLevelET = (EditText) findViewById(R.id.gradeLevelEditText);
+        locationET = (EditText) findViewById(R.id.locationET);
 
-        final EditText lastNameET = (EditText) findViewById(R.id.lastNameEditText);
-        final EditText idET = (EditText) findViewById(R.id.IDEditText);
-        final EditText emailET = (EditText) findViewById(R.id.emailEditText);
-        final EditText schoolDistrictET = (EditText) findViewById(R.id.schoolDistrictEditText);
-        final EditText schoolET = (EditText) findViewById(R.id.schoolEditText);
-        final EditText trainingET = (EditText) findViewById(R.id.trainingEditText);
-        final EditText gradeLevelET = (EditText) findViewById(R.id.gradeLevelEditText);
+//        final EditText lastNameET = (EditText) findViewById(R.id.lastNameEditText);
+//        final EditText idET = (EditText) findViewById(R.id.IDEditText);
+//        final EditText emailET = (EditText) findViewById(R.id.emailEditText);
+//        final EditText schoolDistrictET = (EditText) findViewById(R.id.schoolDistrictEditText);
+//        final EditText schoolET = (EditText) findViewById(R.id.schoolEditText);
+//        final EditText trainingET = (EditText) findViewById(R.id.trainingEditText);
+//        final EditText gradeLevelET = (EditText) findViewById(R.id.gradeLevelEditText);
 
 
 
@@ -49,14 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 //Retrieving data from editText
-          firstName = firstNameET.getText().toString();
-          lastName = lastNameET.getText().toString();
-          nameID = idET.getText().toString();
-          email = emailET.getText().toString();
-          schoolDistrict = schoolDistrictET.getText().toString();
-          schoolName = schoolET.getText().toString();
-          training = trainingET.getText().toString();
-          gradeLevel = gradeLevelET.getText().toString();
+//          firstName = firstNameET.getText().toString();
+//          lastName = lastNameET.getText().toString();
+//          nameID = idET.getText().toString();
+//          email = emailET.getText().toString();
+//          schoolDistrict = schoolDistrictET.getText().toString();
+//          schoolName = schoolET.getText().toString();
+//          training = trainingET.getText().toString();
+//          gradeLevel = gradeLevelET.getText().toString();
+//          location = locationET.getText().toString();
 
 
 
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 schoolName = schoolET.getText().toString();
                 training = trainingET.getText().toString();
                 gradeLevel = gradeLevelET.getText().toString();
+                location = locationET.getText().toString();
 
                 Intent startIntent = new Intent(MainActivity.this, tableView.class);
                 System.out.println("MAIN FIRST NAME IS " + firstName);
@@ -141,6 +144,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if(gradeLevel.length() == 0){
                     startIntent.putExtra("gradeLevel", "");
+                }
+
+                if(locationET.getText().toString().trim().length() > 0) {
+                    startIntent.putExtra("location", location);
+                }
+
+                if(location.length() == 0){
+                    startIntent.putExtra("location", "");
                 }
 
                 startActivity(startIntent);
