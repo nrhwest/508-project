@@ -130,19 +130,31 @@ public class tableView extends AppCompatActivity {
         if (training.length() > 0){
             query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
         }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+        
+>>>>>>> 2e6592fb8e6ce44b155b571b4bf2ffaa0585562c
+>>>>>>> c2b1b1dce552389e7be313a7a87830f549f44be5
         //Query 9
         if(location.length() > 0 && training.length() > 0 ){
-            query = String.format("Select trainingDate, sessTime from session natural join training where location = '" + location + "' AND trainingName = '" + training + "';");
+            query = String.format("Select trainingDate, sessTime from session natural join training where city = '" + location + "' AND trainingName = '" + training + "';");
         }
 
+        //Query 10
         if (firstName.contains("*") && lastName.contains("*") && schoolName.contains("*") && schoolDistrict.length() > 0) {
             query = String.format("select teacher.firstName, teacher.lastName, school.schoolName from teacher inner join school using (schoolName) where school.districtName = '" + schoolDistrict + "' group by firstName, lastName, schoolName;");
         }
 
+        //Query 11
         if (training.length() > 0 && gradeLevel.length() > 0 ) {
             query = String.format("select distinct streetName, city, state from address natural join session natural join training where trainingName = '" + training + "' and gradeLevel = '" + gradeLevel + "' group by streetName, city, state;");
         }
+        
+
 
         SQLiteDatabase database = db.getWritableDatabase();
         cursor = database.rawQuery(query, null);
