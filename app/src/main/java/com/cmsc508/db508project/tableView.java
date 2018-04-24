@@ -28,7 +28,6 @@ public class tableView extends AppCompatActivity {
 
         try {
             db.createDataBase();
-            Toast.makeText(tableView.this, "Database created", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
 
             e.printStackTrace();
@@ -36,7 +35,6 @@ public class tableView extends AppCompatActivity {
 
         try {
             db.openDataBase();
-            Toast.makeText(tableView.this, "Database opened", Toast.LENGTH_SHORT).show();
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -132,7 +130,11 @@ public class tableView extends AppCompatActivity {
         if (training.length() > 0){
             query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 2e6592fb8e6ce44b155b571b4bf2ffaa0585562c
         //Query 9
         if(location.length() > 0 && training.length() > 0 ){
             query = String.format("Select trainingDate, sessTime from session natural join training where city = '" + location + "' AND trainingName = '" + training + "';");
@@ -145,7 +147,7 @@ public class tableView extends AppCompatActivity {
 
         //Query 11
         if (training.length() > 0 && gradeLevel.length() > 0 ) {
-            query = String.format("select streetName, city, state from address natural join session inner join training using(sessionDate) where trainingName = '" + training + "' and gradeLevel = '" + gradeLevel + "';");
+            query = String.format("select distinct streetName, city, state from address natural join session natural join training where trainingName = '" + training + "' and gradeLevel = '" + gradeLevel + "' group by streetName, city, state;");
         }
         
 
@@ -166,15 +168,7 @@ public class tableView extends AppCompatActivity {
                 array[i] = temp;
                 i++;
         }
-
-        for (int j = 0; j < array.length; j++) {
-            System.out.println(array[j]);
-        }
-
         ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array);
         list.setAdapter(adapter);
-
     }
-
-
 }

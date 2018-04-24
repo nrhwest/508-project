@@ -49,7 +49,6 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
         if(dbExist){
             //do nothing - database already exist
-            Log.i("CHECK", "Database exists");
         }else{
 
             //By calling this method and empty database will be created into the default system path
@@ -103,7 +102,6 @@ class DatabaseHelper extends SQLiteOpenHelper {
      * */
     private void copyDataBase() throws IOException{
 
-        System.out.println("in copyDatabase()");
         //Open your local db as the input stream
         InputStream myInput = myContext.getAssets().open(DB_NAME);
 
