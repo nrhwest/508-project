@@ -73,7 +73,7 @@ public class tableView extends AppCompatActivity {
         }
 
         if (email.length() > 0){
-            query = String.format("Select * from teacher where email = '" + email + "';");
+            query = String.format("Select * from teacher where email like %" + email + "%;");
         }
 
         if (schoolDistrict.length() > 0){
@@ -133,6 +133,7 @@ public class tableView extends AppCompatActivity {
             query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
         }
 
+<<<<<<< HEAD
         //Query 8
         if(location.length() > 0){
             query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
@@ -144,12 +145,18 @@ public class tableView extends AppCompatActivity {
         }
 
         
+=======
+        if (firstName.contains("*") && lastName.contains("*") && schoolName.contains("*") && schoolDistrict.length() > 0) {
+            query = String.format("select teacher.firstName, teacher.lastName, school.schoolName from teacher inner join school using (schoolName) where school.districtName = '" + schoolDistrict + "' group by firstName, lastName, schoolName;");
+        }
 
+        if (training.length() > 0 && gradeLevel.length() > 0 ) {
+            query = String.format("select streetName, city, state from address natural join session inner join training using(sessionDate) where trainingName = '" + training + "' and gradeLevel = '" + gradeLevel + "';");
+        }
+>>>>>>> 37191d358b948766d56a4c460181fc5738d77352
 
-       // query = String.format("select * from teacher;");
         SQLiteDatabase database = db.getWritableDatabase();
         cursor = database.rawQuery(query, null);
-        System.out.println("cursor count = " + cursor.getCount());
 
         String[] array = new String[cursor.getCount()];
         int i = 0;
