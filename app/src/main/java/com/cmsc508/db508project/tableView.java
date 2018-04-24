@@ -103,37 +103,47 @@ public class tableView extends AppCompatActivity {
             query = String.format("Select firstName from teacher inner join school using (sID) where districtName = '" + schoolDistrict + "';");
         }
 
-        //Query 10
+        //Query 2
         if (schoolName.length() > 0){
             query = String.format("Select firstName from teacher where schoolName = '" + schoolName + "';");
         }
 
-        //Query 11
+        //Query 3
         if (schoolName.length() > 0 && schoolDistrict.length() > 0){
             query = String.format("Select numTeachersSent from school where districtName = '" + schoolDistrict + "' AND schoolName = '" + schoolName  + "';");
         }
 
-        //Query 12
+        //Query 4
         if (gradeLevel.length() > 0){
             query = String.format("Select firstName, lastName from teacher where gradeLevel = '" + gradeLevel + "';");
         }
 
-        //Query
+        //Query 5
         if (gradeLevel.length() > 0 && schoolDistrict.length() > 0){
             query = String.format("Select workEmail from teacher inner join school using (sID) where gradeLevel = '" + gradeLevel + "' AND districtName = '" + schoolDistrict + "';");
         }
 
-        //Query
+        //Query 6
         if (nameID.length() > 0){
             query = String.format("Select * from teacher where tID = '" + nameID + "';");
         }
 
-        //Query
+        //Query 7
         if (training.length() > 0){
             query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
         }
 
+        //Query 8
+        if(location.length() > 0){
+            query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
+        }
 
+        //Query 9
+        if(location.length() > 0 && training.length() > 0 ){
+            query = String.format("Select trainingDate, sessTime from session natural join training where location = '" + location + "' AND trainingName = '" + training + "';");
+        }
+
+        
 
 
        // query = String.format("select * from teacher;");
