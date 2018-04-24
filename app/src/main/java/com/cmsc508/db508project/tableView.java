@@ -130,15 +130,7 @@ public class tableView extends AppCompatActivity {
         if (training.length() > 0){
             query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
         }
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 2e6592fb8e6ce44b155b571b4bf2ffaa0585562c
->>>>>>> c2b1b1dce552389e7be313a7a87830f549f44be5
         //Query 9
         if(location.length() > 0 && training.length() > 0 ){
             query = String.format("Select trainingDate, sessTime from session natural join training where city = '" + location + "' AND trainingName = '" + training + "';");
