@@ -73,7 +73,7 @@ public class tableView extends AppCompatActivity {
         }
 
         if (email.length() > 0){
-            query = String.format("Select * from teacher where email = '" + email + "';");
+            query = String.format("Select * from teacher where email like %" + email + "%;");
         }
 
         if (schoolDistrict.length() > 0){
@@ -133,7 +133,6 @@ public class tableView extends AppCompatActivity {
             query = String.format("Select maxCapacity from training where trainingName = '" + training + "';");
         }
 
-<<<<<<< HEAD
         if (firstName.contains("*") && lastName.contains("*") && schoolName.contains("*") && schoolDistrict.length() > 0) {
             query = String.format("select teacher.firstName, teacher.lastName, school.schoolName from teacher inner join school using (schoolName) where school.districtName = '" + schoolDistrict + "' group by firstName, lastName, schoolName;");
         }
@@ -141,15 +140,9 @@ public class tableView extends AppCompatActivity {
         if (training.length() > 0 && gradeLevel.length() > 0 ) {
             query = String.format("select streetName, city, state from address natural join session inner join training using(sessionDate) where trainingName = '" + training + "' and gradeLevel = '" + gradeLevel + "';");
         }
-=======
 
-
->>>>>>> aa436a06c5f6dfa8f4fe772f7d9c9698d18c1ab4
-
-       // query = String.format("select * from teacher;");
         SQLiteDatabase database = db.getWritableDatabase();
         cursor = database.rawQuery(query, null);
-        System.out.println("cursor count = " + cursor.getCount());
 
         String[] array = new String[cursor.getCount()];
         int i = 0;
